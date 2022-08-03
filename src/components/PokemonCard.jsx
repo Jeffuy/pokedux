@@ -3,10 +3,10 @@ import { Card } from "antd";
 import Meta from "antd/lib/card/Meta";
 import React from "react";
 
-const PokemonCard = () => {
+const PokemonCard = ({ name }) => {
 	return (
 		<Card
-			title="Ditto"
+			title={name}
 			cover={
 				<img
 					alt="Ditto"
