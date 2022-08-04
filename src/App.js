@@ -6,7 +6,7 @@ import PokemonList from "./components/PokemonList";
 import logo from "./static/logo.svg";
 import "./App.css";
 import { useEffect } from "react";
-import { getPokemon } from "./api";
+import { getPokemon, getPokemonDetails } from "./api";
 
 function App() {
 
@@ -16,8 +16,11 @@ function App() {
 	useEffect(() => {
 		const fetchPokemons = async () => {
 			const pokemonsRes = await getPokemon();
-			dispatch(setPokemons(pokemonsRes));
+			const pokemonsDetailed = await Promise.all(pokemonsRes.map((pokemon) => getPokemonDetails(pokemon)));
+			
+			dispatch(setPokemons(pokemonsDetailed));
 		};
+
 
 		fetchPokemons();
 	}, []);

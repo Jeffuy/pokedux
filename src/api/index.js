@@ -9,3 +9,12 @@ export const getPokemon = () => {
 			console.log(err);
 		});
 };
+
+export const getPokemonDetails = (pokemon) => {
+	return axios
+		.get(pokemon.url)
+		.then((res) => res.data)
+		.catch((err) => {
+			console.log(err);
+		});
+}
