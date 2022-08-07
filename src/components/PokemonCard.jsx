@@ -3,7 +3,10 @@ import { Card } from "antd";
 import Meta from "antd/lib/card/Meta";
 import React from "react";
 
-const PokemonCard = ({ name, image }) => {
+const PokemonCard = ({ name, image, types }) => {
+
+	const typesString = types.map(elem => elem.type.name).join(", ");
+
 	return (
 		<Card
 			title={name}
@@ -15,7 +18,7 @@ const PokemonCard = ({ name, image }) => {
 			}
 			extra={<StarOutlined />}
 		>
-			<Meta description="normal, pink" />
+			<Meta description={typesString} />
 		</Card>
 	);
 };
